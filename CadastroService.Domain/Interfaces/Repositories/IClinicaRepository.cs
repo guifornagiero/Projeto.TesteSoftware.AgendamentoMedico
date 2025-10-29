@@ -1,8 +1,8 @@
 ﻿using CadastroService.Domain.Entities.Clinicas;
 
-namespace CadastroService.Domain.Interfaces.Services
+namespace CadastroService.Domain.Interfaces.Repositories
 {
-    public interface IClinicaService
+    public interface IClinicaRepository
     {
         Task<List<Clinica>> GetAll();
         Task<Clinica> GetById(int id);

@@ -38,7 +38,7 @@ namespace CadastroService.Infraestructure.Data
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Nome TEXT NOT NULL,
                 Email TEXT,
-                PHONE TEXT,
+                Phone TEXT,
                 DataNascimento TEXT,
                 DataCriacao TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 Ativo INTEGER NOT NULL DEFAULT 1
