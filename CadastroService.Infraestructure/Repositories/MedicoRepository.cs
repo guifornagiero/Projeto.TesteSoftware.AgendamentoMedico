@@ -105,5 +105,32 @@ namespace CadastroService.Infraestructure.Repositories
             var updated = await Update(medico);
             return updated != null;
         }
+
+        public async Task<List<Medico>> GetByEspecialidade(int especialidadeId)
+        {
+            using var connection = _context.CreateConnection();
+
+            string sql = @"
+                SELECT m.*, e.Id, e.Nome, e.DataCriacao, e.Ativo
+                FROM Medicos m
+                INNER JOIN Especialidades e ON m.EspecialidadeId = e.Id
+                WHERE m.Ativo = 1
+                  AND e.Ativo = 1
+                  AND m.EspecialidadeId = @EspecialidadeId;
+            ";
+
+            var medicos = await connection.QueryAsync<Medico, Especialidade, Medico>(
+                sql,
+                (medico, especialidade) =>
+                {
+                    medico.Especialidade = especialidade;
+                    return medico;
+                },
+                new { EspecialidadeId = especialidadeId },
+                splitOn: "Id"
+            );
+
+            return medicos.ToList();
+        }
     }
 }

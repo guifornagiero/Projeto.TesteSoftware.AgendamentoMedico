@@ -107,5 +107,19 @@ namespace CadastroService.Application.Services
                 throw;
             }
         }
+
+        public async Task<List<Medico>> GetByEspecialidade(int especialidadeId)
+        {
+            try
+            {
+                _logger.LogInformation("Buscando médicos com especialidade ID {Id}.", especialidadeId);
+                return await _medicoRepository.GetByEspecialidade(especialidadeId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar médicos com especialidade ID {Id}.", especialidadeId);
+                throw;
+            }
+        }
     }
 }

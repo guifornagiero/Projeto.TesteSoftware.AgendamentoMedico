@@ -78,5 +78,12 @@ namespace CadastroService.API.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("GetByEspecialidade/{especialidadeId:int}")]
+        public async Task<IActionResult> GetByEspecialidade(int especialidadeId)
+        {
+            var medicos = await _medicoService.GetByEspecialidade(especialidadeId);
+            return Ok(medicos);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace CadastroService.Domain.Interfaces.Repositories
         Task<Medico?> GetById(int id);
         Task<Medico?> Update(Medico medico);
         Task<bool> Delete(int id);
+        Task<List<Medico>> GetByEspecialidade(int especialidadeId);
     }
 }
