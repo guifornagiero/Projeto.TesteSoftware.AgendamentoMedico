@@ -1,6 +1,6 @@
 ﻿namespace AgendamentoService.Domain.Entities
 {
-    public class Paciente
+    public class PacienteDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }

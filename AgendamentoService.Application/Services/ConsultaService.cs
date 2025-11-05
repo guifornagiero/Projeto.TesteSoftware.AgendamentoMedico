@@ -41,13 +41,13 @@ namespace AgendamentoService.Application.Services
 
             try
             {
-                Clinica clinica = await _cadastroRestService.GetClinicaById(dto.ClinicaId)
+                ClinicaDTO clinica = await _cadastroRestService.GetClinicaById(dto.ClinicaId)
                     ?? throw new BusinessException(HttpStatusCode.NotFound, $"Clinica com ID {dto.ClinicaId} não encontrada.");
 
-                Medico medico = await _cadastroRestService.GetMedicoById(dto.MedicoId)
+                MedicoDTO medico = await _cadastroRestService.GetMedicoById(dto.MedicoId)
                     ?? throw new BusinessException(HttpStatusCode.NotFound, $"Médico com ID {dto.MedicoId} não encontrado.");
 
-                Paciente paciente = await _cadastroRestService.GetPacienteById(dto.PacienteId)
+                PacienteDTO paciente = await _cadastroRestService.GetPacienteById(dto.PacienteId)
                     ?? throw new BusinessException(HttpStatusCode.NotFound, $"Paciente com ID {dto.PacienteId} não encontrado.");
 
                 var conflito = await _consultaRepository.GetConsultaNoHorario(dto.MedicoId, dto.ClinicaId, dto.DataHora);
@@ -163,13 +163,13 @@ namespace AgendamentoService.Application.Services
 
             foreach (var consulta in consultas)
             {
-                Clinica clinica = await _cadastroRestService.GetClinicaById(consulta.ClinicaId);
+                ClinicaDTO clinica = await _cadastroRestService.GetClinicaById(consulta.ClinicaId);
                 consulta.Clinica = clinica;
 
-                Medico medico = await _cadastroRestService.GetMedicoById(consulta.MedicoId);
+                MedicoDTO medico = await _cadastroRestService.GetMedicoById(consulta.MedicoId);
                 consulta.Medico = medico;
 
-                Paciente paciente = await _cadastroRestService.GetPacienteById(consulta.PacienteId);
+                PacienteDTO paciente = await _cadastroRestService.GetPacienteById(consulta.PacienteId);
                 consulta.Paciente = paciente;
             }
 
@@ -180,13 +180,13 @@ namespace AgendamentoService.Application.Services
         {
             if (consulta == null) return consulta;
 
-            Clinica clinica = await _cadastroRestService.GetClinicaById(consulta.ClinicaId);
+            ClinicaDTO clinica = await _cadastroRestService.GetClinicaById(consulta.ClinicaId);
             consulta.Clinica = clinica;
 
-            Medico medico = await _cadastroRestService.GetMedicoById(consulta.MedicoId);
+            MedicoDTO medico = await _cadastroRestService.GetMedicoById(consulta.MedicoId);
             consulta.Medico = medico;
 
-            Paciente paciente = await _cadastroRestService.GetPacienteById(consulta.PacienteId);
+            PacienteDTO paciente = await _cadastroRestService.GetPacienteById(consulta.PacienteId);
             consulta.Paciente = paciente;
 
             return consulta;

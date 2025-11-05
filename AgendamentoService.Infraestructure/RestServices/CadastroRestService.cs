@@ -23,27 +23,27 @@ namespace AgendamentoService.Infraestructure.RestServices
             };
         }
 
-        public async Task<List<Medico>> GetMedicosByEspecialidade(int especialidadeId)
+        public async Task<List<MedicoDTO>> GetMedicosByEspecialidade(int especialidadeId)
         {
-            var response = await _httpClient.GetFromJsonAsync<List<Medico>>($"Medico/ByEspecialidade/{especialidadeId}", _jsonOptions);
-            return response ?? new List<Medico>();
+            var response = await _httpClient.GetFromJsonAsync<List<MedicoDTO>>($"Medico/ByEspecialidade/{especialidadeId}", _jsonOptions);
+            return response ?? new List<MedicoDTO>();
         }
 
-        public async Task<Clinica> GetClinicaById(int clinicaId)
+        public async Task<ClinicaDTO> GetClinicaById(int clinicaId)
         {
-            var response = await _httpClient.GetFromJsonAsync<Clinica>($"Clinica/{clinicaId}", _jsonOptions);
+            var response = await _httpClient.GetFromJsonAsync<ClinicaDTO>($"Clinica/{clinicaId}", _jsonOptions);
             return response;
         }
 
-        public async Task<Medico> GetMedicoById(int id)
+        public async Task<MedicoDTO> GetMedicoById(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<Medico>($"Medico/{id}", _jsonOptions);
+            var response = await _httpClient.GetFromJsonAsync<MedicoDTO>($"Medico/{id}", _jsonOptions);
             return response;
         }
 
-        public async Task<Paciente> GetPacienteById(int id)
+        public async Task<PacienteDTO> GetPacienteById(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<Paciente>($"Paciente/{id}", _jsonOptions);
+            var response = await _httpClient.GetFromJsonAsync<PacienteDTO>($"Paciente/{id}", _jsonOptions);
             return response;
         }
     }
