@@ -134,3 +134,5 @@ ServiceReferences/
 # Arquivos do IIS
 _IISExpress/
 iisexpress.log
+
+*.db
