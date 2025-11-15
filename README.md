@@ -6,3 +6,7 @@ Rodar testes de exception:
 
 Rodar testes de integração
 `dotnet test .\Integration\Integration.csproj`
+
+Dentro de cada pasta de Teste possui um readme explicando como roda cada teste:
+
+Caixa preta: [Testes de caixa preta](Testes.Funcionais/README.md)
